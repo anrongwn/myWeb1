@@ -17,7 +17,7 @@ void JsContext::sendMsg(QWebEnginePage *page, QString &msg)
     QEventLoop loop;
     QObject::connect(this, &JsContext::jsCompleted, &loop, &QEventLoop::quit);
 
-    QString result;
+    //QString result;
     page->runJavaScript(js, [&](const QVariant &v){
         //result=v.toString();
 
