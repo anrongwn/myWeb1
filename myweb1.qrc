@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>index.html</file>
+        <file>msgutils.js</file>
+        <file>page2.js</file>
+    </qresource>
+</RCC>
