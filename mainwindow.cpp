@@ -125,11 +125,13 @@ void MainWindow::onloadFinished(bool ok)
 
     if (fn==R"(D:/MyTest/2019_Qt/myWeb1/index.html)"){
         loadJS load;
-        QString js = load.addScript("test1.js");
-        load.asynRun(this->webView_->page(), js);
+        QString js = load.addScriptSrc("test1.js");
+        load.synRun(this->webView_->page(), js, 10);
 
-        //
-        QThread::msleep(10);
+        /*//无效
+        QString js = load.addScript("msgutils.js");
+        load.synRun(this->webView_->page(), js);
+        */
     }
 
 

@@ -20,7 +20,9 @@ public:
     QString addScriptSrc(const QString &fn);
     QString addScript(const QString &fn);
 
-    int asynRun(QWebEnginePage* page, const QString &js);
+
+    int synRun(QWebEnginePage* page, const QString &js, const int ms);
+    int synRun(QWebEnginePage* page, const QString &jsContent);
 };
 
 #endif // LOADJS_H

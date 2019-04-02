@@ -17,6 +17,7 @@ function init()
     }
 	
     document.getElementById("bn1").onclick=onBtnSendMsg;
+    //alert("init()!");
 }
 
 //to qt object
