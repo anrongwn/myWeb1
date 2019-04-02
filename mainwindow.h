@@ -26,6 +26,7 @@ public slots:
     void onPageMsg(int nodeid, const QString& msg);
 
     void onloadFinished(bool ok);
+    void onloadStarted();
     /*
 private slots:
     void on_pushButton_3_clicked();

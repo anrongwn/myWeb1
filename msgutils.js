@@ -1,5 +1,6 @@
 var context;
-// 初始化
+
+//init
 function init()
 {
     if (typeof QWebChannel != 'undefined')
@@ -12,27 +13,46 @@ function init()
     }
     else
     {
-        alert("qt对象获取失败！");
+        alert("qt object created failed!");
     }
+	
+    document.getElementById("bn1").onclick=onBtnSendMsg;
 }
-// 向qt发送消息
+
+//to qt object
 function sendMessage(msg)
 {
     if(typeof context == 'undefined')
     {
-        alert("context对象获取失败！");
+        alert("context == 'undefined'");
     }
     else
     {
         context.onMsg(1, msg);
     }
 }
-// 控件控制函数
+
+//onclick
 function onBtnSendMsg()
 {
     var cmd = document.getElementById("in1").value;
     sendMessage(cmd);
 }
+
+//recv qt object
+function recvMessage(msg)
+{
+    //alert("recv qt object:" + msg);
+    var obj = document.getElementById("in1");
+    if (typeof obj === 'undefined'){
+        alert("obj === 'undefined'" + msg);
+    }else{
+        obj.value=msg;
+    }
+
+    return "index.html--recvMessage";
+}
+
 
 function onTest(){
     var obj = document.getElementById("in1");
@@ -56,20 +76,6 @@ function getResult(){
     return result;
 }
 
-// 接收qt发送的消息
-function recvMessage(msg)
-{
-    //alert("接收到Qt发送的消息：" + msg);
-    var obj = document.getElementById("in1");
-    if (typeof obj === 'undefined'){
-        alert("obj === 'undefined'" + msg);
-    }else{
-        //alert("接收到Qt发送的消息1：" + msg);
-        obj.value=msg;
-    }
-
-    return "index.html--recvMessage";
-}
 
 
 function getCookie(c_name)
@@ -88,6 +94,7 @@ function getCookie(c_name)
     return ""
 }
 
+/*
 window.onload=function(){
     var amount = getCookie("amount");
 
@@ -98,5 +105,6 @@ window.onload=function(){
     document.getElementById("in1").value=amount;
 
 }
+*/
 
 init();

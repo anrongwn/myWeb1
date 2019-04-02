@@ -3,5 +3,6 @@
         <file>index.html</file>
         <file>msgutils.js</file>
         <file>page2.js</file>
+        <file>test1.js</file>
     </qresource>
 </RCC>

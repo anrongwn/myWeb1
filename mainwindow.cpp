@@ -9,6 +9,8 @@
 #include <QEventLoop>
 #include <QTimer>
 #include <QTime>
+#include <QThread>
+#include "loadjs.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -34,6 +36,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(jsContext_, &JsContext::recvMsg, this, &MainWindow::onPageMsg);
     //QObject::connect(webView_, &CMyWebView::loadFinished, this, &MainWindow::onloadFinished);
     QObject::connect(webView_->page(), &QWebEnginePage::loadFinished, this, &MainWindow::onloadFinished);
+    QObject::connect(webView_->page(), &QWebEnginePage::loadStarted, this, &MainWindow::onloadStarted);
 
     QString urlName("D:\\MyTest\\2019_Qt\\myWeb1\\index.html");
     QUrl url = QUrl::fromUserInput(urlName);
@@ -114,12 +117,38 @@ void MainWindow::onloadFinished(bool ok)
     if (!ok) return;
 
     QUrl url = this->webView_->page()->url();
+    QString fn = url.toLocalFile();
+
     qDebug()<<"====="<< QTime::currentTime().toString("hh:mm:ss.zzz ") <<url<<" loadFinished.";
 
-    QString param("1000");
+    QString param("2000");
+
+    if (fn==R"(D:/MyTest/2019_Qt/myWeb1/index.html)"){
+        loadJS load;
+        QString js = load.addScript("test1.js");
+        load.asynRun(this->webView_->page(), js);
+
+        //
+        QThread::msleep(10);
+    }
+
 
     jsContext_->sendMsg(webView_->page(), param);
     qDebug()<<"=====" << QTime::currentTime().toString("hh:mm:ss.zzz") << " jsContext_->sendMsg completed.";
+
+}
+
+void MainWindow::onloadStarted()
+{
+    QUrl url = this->webView_->page()->url();
+    qDebug()<<"====="<< QTime::currentTime().toString("hh:mm:ss.zzz ") <<url<<" onloadStarted.";
+
+
+    /*
+    loadJS load;
+    QString js = load.addScript("test1.js");
+    load.asynRun(this->webView_->page(), js);
+    */
 
 }
 

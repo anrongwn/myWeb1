@@ -28,12 +28,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     cmywebview.cpp \
-    jscontext.cpp
+    jscontext.cpp \
+    loadjs.cpp
 
 HEADERS += \
         mainwindow.h \
     cmywebview.h \
-    jscontext.h
+    jscontext.h \
+    loadjs.h
 
 FORMS += \
         mainwindow.ui
