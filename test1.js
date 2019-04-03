@@ -4,7 +4,7 @@
     var head= document.getElementsByTagName('body')[0];
     var script= document.createElement('script');
     script.type= 'text/javascript';
-    script.src= './msgutils.js';
+    script.src= './msgutils2.js';
     script.onload=function(){
         isfinished=true;
     }

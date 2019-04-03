@@ -4,5 +4,6 @@
         <file>msgutils.js</file>
         <file>page2.js</file>
         <file>test1.js</file>
+        <file>msgutils2.js</file>
     </qresource>
 </RCC>

@@ -125,33 +125,42 @@ void MainWindow::onloadFinished(bool ok)
 
     if (fn==R"(D:/MyTest/2019_Qt/myWeb1/index.html)"){
         loadJS load;
+
+        /*//使用script.src 方法动态 加载js文件
         QString js = load.addScriptSrc("test1.js");
         load.synRun(this->webView_->page(), js, 10);
-
-        /*//无效
-        QString js = load.addScript("msgutils.js");
-        load.synRun(this->webView_->page(), js);
         */
-    }
 
+        //使用script.text='' 方法动态加载js内容
+        QString js = load.addScript("msgutils2.js");
+        load.synRun(this->webView_->page(), js, 10);
+    }
 
     jsContext_->sendMsg(webView_->page(), param);
     qDebug()<<"=====" << QTime::currentTime().toString("hh:mm:ss.zzz") << " jsContext_->sendMsg completed.";
-
 }
 
 void MainWindow::onloadStarted()
 {
     QUrl url = this->webView_->page()->url();
     qDebug()<<"====="<< QTime::currentTime().toString("hh:mm:ss.zzz ") <<url<<" onloadStarted.";
-
+    QString fn = url.toLocalFile();
 
     /*
     loadJS load;
     QString js = load.addScript("test1.js");
     load.asynRun(this->webView_->page(), js);
     */
+    if (fn==R"(D:/MyTest/2019_Qt/myWeb1/index.html)"){
 
+        /*
+        loadJS load;
+
+        QString jsContent("<p>anrong_wn test</p>");
+        load.synRun(this->webView_->page(), jsContent);
+        */
+
+    }
 }
 
 /*
