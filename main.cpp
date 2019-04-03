@@ -15,6 +15,9 @@ int main(int argc, char *argv[])
     */
 
     MainWindow w;
+#ifndef _DEBUG
+    w.setWindowFlags(Qt::WindowStaysOnTopHint);//置顶
+#endif
     w.show();
     //w.showFullScreen();
 

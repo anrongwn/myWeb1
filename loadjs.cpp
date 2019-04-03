@@ -16,7 +16,8 @@ QString loadJS::addScriptSrc(const QString &fn)
 {
     QString js;
 
-    QString path(R"(D:\MyTest\2019_Qt\myWeb1\)");
+    QString path(R"(D:\MyTest\2019_Qt\myWeb1\)");//当前目录
+    path=R"(:/)";                               //QRC 中
     path+=fn;
     QFile jsfile(path);
     if (jsfile.open(QIODevice::ReadOnly)){
@@ -34,6 +35,7 @@ QString loadJS::addScript(const QString &fn)
     js+="oscript.text='";
 
     QString path(R"(D:\MyTest\2019_Qt\myWeb1\)");
+    path=R"(:/)";
     path+=fn;
     QFile jsfile(path);
     QString text;
