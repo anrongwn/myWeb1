@@ -126,14 +126,14 @@ void MainWindow::onloadFinished(bool ok)
     if (fn==R"(D:/MyTest/2019_Qt/myWeb1/index.html)"){
         loadJS load;
 
-        /*//使用script.src 方法动态 加载js文件
+        /*//使用script.src 方法动态 加载js文件(此方法由于js文件装载为异步）
         QString js = load.addScriptSrc("test1.js");
         load.synRun(this->webView_->page(), js, 10);
         */
 
         //使用script.text='' 方法动态加载js内容
         QString js = load.addScript("msgutils2.js");
-        load.synRun(this->webView_->page(), js, 10);
+        load.synRun(this->webView_->page(), js, 0);
     }
 
     jsContext_->sendMsg(webView_->page(), param);
@@ -146,7 +146,7 @@ void MainWindow::onloadStarted()
     qDebug()<<"====="<< QTime::currentTime().toString("hh:mm:ss.zzz ") <<url<<" onloadStarted.";
     QString fn = url.toLocalFile();
 
-    /*
+    /*//无效
     loadJS load;
     QString js = load.addScript("test1.js");
     load.asynRun(this->webView_->page(), js);
