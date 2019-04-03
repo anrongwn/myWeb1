@@ -24,10 +24,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QWebEngineSettings * set = webView_->settings();
     set->setAttribute(QWebEngineSettings::PluginsEnabled, true);
+    set->setAttribute(QWebEngineSettings::FullScreenSupportEnabled, true);
 
     webView_->setAttribute(Qt::WA_DeleteOnClose, true);
     //webView_->load(QUrl("index.html"));
     //webView_->setUrl(QUrl("qrc:/index.html"));
+    webView_->setContextMenuPolicy(Qt::NoContextMenu);
 
     jsContext_ = new JsContext(this);
     channel_ = new QWebChannel(this);
