@@ -53,7 +53,8 @@ MainWindow::MainWindow(QWidget *parent) :
     cookie->setCookie(cookieinfo, url);
 
 
-    webView_->show();
+    //webView_->show();
+    webView_->showFullScreen();
 }
 
 MainWindow::~MainWindow()
