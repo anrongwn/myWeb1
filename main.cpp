@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QDebug>
+#include <QProcess>
+#include <QFile>
+#include <QSocketNotifier>
 
 
 int main(int argc, char *argv[])
@@ -17,9 +20,17 @@ int main(int argc, char *argv[])
     MainWindow w;
 #ifndef _DEBUG
     w.setWindowFlags(Qt::WindowStaysOnTopHint);//置顶
-#endif
+    w.showFullScreen();
+#else
     w.show();
-    //w.showFullScreen();
+#endif
+
+    QFile fin;
+    if(fin.open(stdin, QIODevice::ReadOnly))
+    {
+        QSocketNotifier sn(fin.handle(), QSocketNotifier::Read);
+    }
+
 
     return a.exec();
 }
