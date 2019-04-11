@@ -42,6 +42,8 @@ private:
     CMyWebView * webView_=nullptr;
     JsContext * jsContext_=nullptr;
     QWebChannel * channel_=nullptr;
+
+    QWebEngineView * webView_dev_=nullptr;
 };
 
 #endif // MAINWINDOW_H

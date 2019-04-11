@@ -55,6 +55,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //webView_->show();
     webView_->showFullScreen();
+
+    /*//debug model
+    webView_dev_ = new QWebEngineView(this);
+    webView_->page()->setDevToolsPage(webView_dev_->page());
+    webView_dev_->show();
+    */
 }
 
 MainWindow::~MainWindow()
