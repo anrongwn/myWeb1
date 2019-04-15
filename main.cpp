@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
     //QTextCodec::setCodecForLocale(QTextCodec::codecForName("GB18030"));
     QTextCodec *systemCodec = QTextCodec::codecForLocale();
-    qDebug()<<systemCodec->name();
+    qDebug() << systemCodec->name();
 
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QCoreApplication::setAttribute(Qt::AA_UseOpenGLES);

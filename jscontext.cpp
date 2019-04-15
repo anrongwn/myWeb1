@@ -1,6 +1,7 @@
 #include "jscontext.h"
 #include <QEventLoop>
 #include <QTimer>
+#include <utility>
 
 
 #include <QTime>
@@ -65,7 +66,8 @@ QVariant JsContext::execJs(QWebEnginePage *page, const QString &js)
 
     qDebug()<<"==="<< QTime::currentTime().toString("hh:mm:ss.zzz")<<" execJs, loop.exec() exit.";
 
-    return result;
+    //c++11 move constructs
+    return std::move(result);
 }
 
 void JsContext::onMsg(int nodeid, const QString &msg)
