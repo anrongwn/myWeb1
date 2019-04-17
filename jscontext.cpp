@@ -52,7 +52,7 @@ QVariant JsContext::execJs(QWebEnginePage *page, const QString &js)
     QVariant result;
     page->runJavaScript(js, [&](const QVariant &v){
 
-        result=v;
+        result = std::move(v);
         emit jsCompleted();
 
         qDebug()<< "===" << QTime::currentTime().toString("hh:mm:ss.zzz")<<" page->runJavaScript result: " << result;

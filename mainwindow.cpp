@@ -65,9 +65,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    jsContext_->deleteLater();
-    channel_->deleteLater();
+    //jsContext_->deleteLater();
+    //channel_->deleteLater();
     //webView_->disconnect();
+
     webView_->deleteLater();
 
     delete ui;
@@ -133,6 +134,7 @@ void MainWindow::onloadFinished(bool ok)
     QString param("2000");
 
     if (fn==R"(D:/MyTest/2019_Qt/myWeb1/index.html)"){
+        qDebug()<<"=====fn==D:/MyTest/2019_Qt/myWeb1/index.html)" << fn;
         loadJS load;
 
         /*//使用script.src 方法动态 加载js文件(此方法由于js文件装载为异步）

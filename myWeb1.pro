@@ -48,5 +48,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     myweb1.qrc
 
-DISTFILES += \
-    page2.html
+DISTFILES +=

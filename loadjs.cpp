@@ -57,6 +57,10 @@ QString loadJS::addScript(const QString &fn)
         text+= jsfile.readAll().constData();
 
         text.replace("\r\n", "");
+        //qDebug()<< "===loadJS::addScript open" << path << text;
+    }
+    else{
+         qDebug()<< "===loadJS::addScript open" << path << " failed.";
     }
 
 
@@ -64,6 +68,7 @@ QString loadJS::addScript(const QString &fn)
     js+="';\r\nohead.appendChild(oscript);\r\n";
     //js+="\r\nohead.appendChild(oscript);\r\n";
     //js+=QString("})();\r\n");
+
 
     /*
     QFile inf(R"(D:\MyTest\2019_Qt\myWeb1\temp.js)");

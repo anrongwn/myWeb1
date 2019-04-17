@@ -10,10 +10,13 @@ int main(int argc, char *argv[])
 {
     //QTextCodec::setCodecForLocale(QTextCodec::codecForName("GB18030"));
     QTextCodec *systemCodec = QTextCodec::codecForLocale();
-    qDebug() << systemCodec->name();
+    qDebug() << "===systemCodec.naem = " << systemCodec->name();
 
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#ifndef _DEBUG
     QCoreApplication::setAttribute(Qt::AA_UseOpenGLES);
+#endif
+
     QApplication a(argc, argv);
 
     //修改 QtWebEngineProcess.exe 进程名为 anrongWeb.exe
@@ -25,6 +28,11 @@ int main(int argc, char *argv[])
     qputenv("QTWEBENGINEPROCESS_PATH", webengingProcessPath.toLocal8Bit());
 
     /*
+    //增加 单进程模式 环境变量
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", QString("--single-process ").toLocal8Bit());
+    */
+
+    /*
     qDebug()<<QApplication::applicationDirPath();
     qDebug()<<QApplication::applicationFilePath();
     */
@@ -32,7 +40,8 @@ int main(int argc, char *argv[])
     MainWindow w;
 #ifndef _DEBUG
     w.setWindowFlags(Qt::WindowStaysOnTopHint);//置顶
-    w.showFullScreen();
+    //w.showFullScreen();
+    w.show();
 #else
     w.show();
 #endif
