@@ -13,9 +13,7 @@ int main(int argc, char *argv[])
     qDebug() << "===systemCodec.naem = " << systemCodec->name();
 
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#ifndef _DEBUG
-    QCoreApplication::setAttribute(Qt::AA_UseOpenGLES);
-#endif
+    QCoreApplication::setAttribute(Qt::AA_UseDesktopOpenGL);
 
     QApplication a(argc, argv);
 
