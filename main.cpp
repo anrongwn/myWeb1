@@ -25,6 +25,11 @@ int main(int argc, char *argv[])
 #endif
     qputenv("QTWEBENGINEPROCESS_PATH", webengingProcessPath.toLocal8Bit());
 
+    /*//测试获取环境变量
+    QByteArray qthome = qgetenv("QT_HOME");
+     qDebug() << "=== QT_HOME = " << qthome;
+     */
+
     /*
     //增加 单进程模式 环境变量
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", QString("--single-process ").toLocal8Bit());
@@ -38,7 +43,7 @@ int main(int argc, char *argv[])
     MainWindow w;
 #ifndef _DEBUG
     w.setWindowFlags(Qt::WindowStaysOnTopHint);//置顶
-    //w.showFullScreen();
+    //w.showFullScreen();   //全屏
     w.show();
 #else
     w.show();
