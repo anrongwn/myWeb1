@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //webView_->setUrl(QUrl("qrc:/index.html"));
     webView_->setContextMenuPolicy(Qt::NoContextMenu);
 
+
     jsContext_ = new JsContext(this);
     channel_ = new QWebChannel(this);
     channel_->registerObject("context", jsContext_);

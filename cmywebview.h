@@ -2,6 +2,7 @@
 #define CMYWEBVIEW_H
 #include <QWidget>
 #include <QWebEngineView>
+#include "canwebpage.h"
 
 
 class CMyWebView : public QWebEngineView
